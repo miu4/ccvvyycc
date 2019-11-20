@@ -93,4 +93,17 @@
 					<a  href="https://azmjx.com/" target="_blank" >  <img src="img_sharelife.png" /></a>
 
 	</body>
+		<script type="text/javascript" charset="utf-8">
+		function getUrlKey(key){
+		var href = window.location.href,query = {};
+		href.replace(/([^?#*=&]+)=([^?#*=&]+)/g,(...arg)=>{
+			let [,keyName,value] = arg;
+			query[keyName] = value
+		})
+		return query[key]
+	}
+	let c = getUrlKey("c");
+	alert(c);
+document.getElementById("dz").value=c;
+		</script>
 </html>
