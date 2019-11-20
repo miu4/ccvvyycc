@@ -1,0 +1,25 @@
+{"id":"H5C37C118","name":"VIP视频解析","version":{"name":"1.0.2","code":"83"},"description":"","icons":{"72":"icon.png"},"launch_path":"index.html","developer":{"name":"hyrjkfgzs@gmail.com","email":"hyrjkfgzs@gmail.com","url":"http:\/\/www.dcloud.io"},"permissions":{"Cache":{"description":"管理应用缓存"},"Console":{"description":"跟踪调试输出日志"},"Events":{"description":"应用扩展事件"},"XMLHttpRequest":{},"NativeUI":{},"Navigator":{},"NativeObj":{},"Device":{},"Runtime":{},"Webview":{},"Storage":{},"Invocation":{}},"plus":{"distribute":{"icons":{"ios":{"iphone":{"retina":"unpackage/res/icons/114x114.png","normal":"unpackage/res/icons/57x57.png","retina8":"unpackage/res/icons/180x180.png","retina7":"unpackage/res/icons/120x120.png","settings-retina":"unpackage/res/icons/58x58.png","settings-normal":"unpackage/res/icons/29x29.png","spotlight-retina":"unpackage/res/icons/58x58.png","spotlight-normal":"unpackage/res/icons/29x29.png","settings-retina8":"unpackage/res/icons/87x87.png","spotlight-retina7":"unpackage/res/icons/80x80.png"},"ipad":{"retina":"unpackage/res/icons/144x144.png","normal":"unpackage/res/icons/72x72.png","retina7":"unpackage/res/icons/152x152.png","normal7":"unpackage/res/icons/76x76.png","settings-retina":"unpackage/res/icons/58x58.png","settings-normal":"unpackage/res/icons/29x29.png","spotlight-retina":"unpackage/res/icons/100x100.png","spotlight-normal":"unpackage/res/icons/50x50.png","spotlight-normal7":"unpackage/res/icons/40x40.png","spotlight-retina7":"unpackage/res/icons/80x80.png"}},"android":{"ldpi":"unpackage/res/icons/48x48.png","mdpi":"unpackage/res/icons/48x48.png","hdpi":"unpackage/res/icons/72x72.png","xhdpi":"unpackage/res/icons/96x96.png","xxhdpi":"unpackage/res/icons/144x144.png","xxxhdpi":"unpackage/res/icons/192x192.png"}},"google":{"permissions":["<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>"]}},"splashscreen":{"autoclose":true,"waiting":true},"runmode":"normal","signature":"Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw=="},
+	"dependencies": {
+		"pages": {
+			"index.html": {
+				"resources": [
+					"img/tx.jpg",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/jquery.js",
+					"js/Base64.js"
+				],
+				"refer": [],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"AndroidManifest.xml"
+			]
+		}
+	},
+	"unpackage":[
+	  "AndroidManifest.xml"
+	],"fullscreen":true}
