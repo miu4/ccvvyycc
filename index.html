@@ -10,136 +10,17 @@
 		<script src="js/Base64.js"></script>
 		<link href="css/mui.min.css" rel="stylesheet" />
 		<script type="text/javascript" charset="utf-8">
-			var q_jx = 1;
-			var first = null;
-			mui.back = function() {
-				//首次按键，提示‘再按一次退出应用’
-				if(!first) {
-					first = new Date().getTime();
-					mui.toast('再按一次退出应用');
-					setTimeout(function() {
-						first = null;
-					}, 1000);
-				} else {
-					if(new Date().getTime() - first < 1000) {
-						plus.runtime.quit();
-					}
-				}
-			};
-			mui.plusReady(function() {
-				var j_data = ""
-				$(document).ready(function() {
-					$("#dz").val("http://v.youku.com/v_show/id_XMjk3ODcwNzgzMg==.html"); 
-					mui.alert("\n更多解析接口  等待添加\n暂时只支持解析优酷的电影", "提示", "确定", 0, "div");   
-					$("#cd").click(function() {
-						mui.alert("\nBy:回忆无法挽留", "提示", "确定", 0, "div"); 
-					})
-					$("#jx01").click(function() {
-						q_jx = 1
-						//console.log(q_jk)
-					})
-					$("#jx02").click(function() {
-						q_jx = 2
-						//console.log(q_jk)
-					})
-					$("#jx03").click(function() {
-						q_jx = 3
-						//console.log(q_jk)
-					})
-					$("#jx04").click(function() {
-						q_jx = 4
-						//console.log(q_jk)
-					})
-					$("#jx05").click(function() {
-						q_jx = 5
-						//console.log(q_jk)
-					})
-					$("#jx").click(function() {
-						j_data = $("#dz").val()
-						j_data = j_data.replace(/\\/g, "")
-						if(j_data == "") {
-							mui.alert("\n请输入要解析的视频地址！", "提示", "确定", 0, "div")
-						} else {
-							if(q_jx == 1) {
-								jx01($("#dz").val())
-							} else {
-								if(q_jx == 2) {
-									jx02($("#dz").val())
-								} else {
-									if(q_jx == 3) {
-										jx03($("#dz").val())
-									} else {
-										if(q_jx == 4) {
-											jx04($("#dz").val())
-										} else {
-											jx05($("#dz").val())
-										}
-									}
-								}
-							}
-						}
-					});
-				});
 
-			})
-
-			function jx01(wangzhi) {
-				var j_key = ""
-				var j_time = ""
-				var j_url = ""
-				plus.nativeUI.showWaiting("正在解析视频！请稍等！");
-				mui.get("https://jx.ejiafarm.com/dy.php?url=" + wangzhi, function(data) {
-					j_key = data.substring(data.indexOf(", \"key\": \"") + 10, data.indexOf("\", \"url\": \""))
-					j_time = data.substring(data.indexOf("\"time\":\"") + 8, data.indexOf("\", \"key\": \""))
-					mui.post("http://tool.chinaz.com/tools/urlencode.aspx", {
-						"content": wangzhi,
-						"charsetSelect": "utf-8",
-						"en": "UrlEncode编码"
-					}, function(data) {
-						j_url = data.substring(data.indexOf(" name=\"content\" id=\"content\">") + 29, data.indexOf("</textarea> "))
-						//console.log(j_url);
-						//console.log(j_key);
-						//console.log(j_time);
-						mui.post("", {
-							"time": j_time,
-							"key": j_key,
-							"url": j_url,
-							"type": "youku"
-						}, function(data) {
-							plus.nativeUI.closeWaiting();
-							console.log(data)
-							if(data.indexOf("\"success\":0") > 0) {
-								mui.alert("\n解析失败！没有找到视频播放信息", "提示", "确定", 0, "div");
-								return;
-							}
-							if(data.indexOf("url") == -1) {
-								mui.alert("\n解析失败！请联系作者！ 错误代码：0x2", "提示", "确定", 0, "div");
-								return;
-							}
-							if(data.indexOf("\"play\":\"ajax\"") > 0) {
-								mui.alert("\n解析失败！请联系作者！ 错误代码：0x3", "提示", "确定", 0, "div");
-								return;
-							}
-							if(data.indexOf("\"play\":\"xml\"") > 0) {
-								mui.alert("\n解析失败！请联系作者！ 错误代码：0x4", "提示", "确定", 0, "div");
-								return;
-							}
-							data = data.substring(data.indexOf("\"url\":\"") + 7, data.indexOf("\"}"))
-							data = data.replace(/\\/g, "")
-							var Intent = plus.android.importClass("android.content.Intent");
-							var Uri = plus.android.importClass("android.net.Uri");
-							var main = plus.android.runtimeMainActivity();
-							var intent = new Intent(Intent.ACTION_VIEW);
-							var uri = Uri.parse(data);
-							intent.setDataAndType(uri, "video/*");
-							main.startActivity(intent);
-							return;
-						})
-
-					})
-				})
-			}
+		function  g1(){
+		window.open("https://jx.ejiafarm.com/dy.php?url="+document.getElementById("dz").value,"");
+}            	function  g2(){
+		window.open("http://jqaaa.com/jx.php?url="+document.getElementById("dz").value,"");
+}            	function  g3(){
+		window.open("https://jx.618g.com/?url="+document.getElementById("dz").value,"");
+}             
+   
 		</script>
+		
 		<style type="text/css">
 			#chehuamain {
 				margin-top: 15px;
@@ -190,36 +71,26 @@
 				<p id="nicheng">微影城vvyy.cc</p>
 			</div>
 			<p id="bq">视频地址：</p>
-			<input id="dz" type="text" class="mui-input-clear" placeholder="请输入VIP视频地址">
-			<!--<button id="jx" type="button" class="mui-btn mui-btn-purple mui-btn-outlined mui-pull-right">解析</button><br />--><br /><br />
+			<input id="dz" type="text" class="mui-input-clear" placeholder="请输入VIP视频地址 http">
 			<ul class="mui-table-view mui-table-view-radio">
-				           	
-				<button id="jx01" style="margin-left:10px;" type="button" class="mui-btn mui-btn-purple mui-btn-outlined mui-pull-left">解析接口01 </button>
-				<button id="jx02" style="margin-left:10px;" type="button" class="mui-btn mui-btn-purple mui-btn-outlined mui-pull-left">解析接口02 </button>
-				<button id="jx03" style="margin-left:10px;" type="button" class="mui-btn mui-btn-purple mui-btn-outlined mui-pull-left">解析接口03 </button>
-				<button id="jx05" style="margin-right:20px;" type="button" class="mui-btn mui-btn-red mui-btn-outlined mui-pull-right">爱奇艺 </button>
-				<button id="jx05" style="margin-right:10px;" type="button" class="mui-btn mui-btn-red mui-btn-outlined mui-pull-right">优酷 </button>
-				<button id="jx05" style="margin-right:10px;" type="button" class="mui-btn mui-btn-red mui-btn-outlined mui-pull-right">腾讯 </button>
-				
+			<button onclick="go()">点击这里</button>
 
-                	<!--<li id="jx01" class="mui-table-view-cell mui-selected">
-					<a class="mui-navigate-right">穷二代250 </a>
-				</li>   <li id="jx02" class="mui-table-view-cell">
-						<a class="mui-navigate-right">解析接口02 基本可全网 </a>
-					</li>
-					<li id="jx03" class="mui-table-view-cell">
-						<a class="mui-navigate-right">解析接口03 基本可全网 </a>
-					</li>
-					<li id="jx04" class="mui-table-view-cell">
-						<a class="mui-navigate-right">解析接口04 基本可全网</a>
-					</li>
-					<li id="jx05" class="mui-table-view-cell">
-						<a class="mui-navigate-right">解析接口05 基本可全网</a>
-					</li>
-                -->
+
+				<button onclick="g1()"  style="margin-left:10px;" type="button" class="mui-btn mui-btn-purple mui-btn-outlined mui-pull-left">解析接口01 </button>
+				<button onclick="g2()"  style="margin-left:10px;" type="button" class="mui-btn mui-btn-purple mui-btn-outlined mui-pull-left">解析接口02 </button>
+				<button onclick="g3()"  style="margin-left:10px;" type="button" class="mui-btn mui-btn-purple mui-btn-outlined mui-pull-left">解析接口03 </button>
+				<a href="https://www.iqiyi.com/" target="_blank" > 
+				<button  style="margin-right:20px;" type="button" class="mui-btn mui-btn-red mui-btn-outlined mui-pull-right">爱奇艺 </button>
+				</a>
+				<a href="https://www.youku.com/" target="_blank" > 
+				<button  style="margin-right:5px;" type="button" class="mui-btn mui-btn-red mui-btn-outlined mui-pull-right">优酷 </button>
+				</a>
+				<a href="https://v.qq.com/" target="_blank" > 
+				<button  style="margin-right:5px;" type="button" class="mui-btn mui-btn-red mui-btn-outlined mui-pull-right">腾讯 </button>
+				</a>
+				
 			</ul>
 			
 		</div>
 	</body>
-
 </html>
